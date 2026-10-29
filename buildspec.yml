@@ -3,7 +3,24 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - echo "===== PRE BUILD ====="
+      - echo "Instalando dependencias..."
       - pip install -r requirements.txt
+
+  build:
+    commands:
+      - echo "===== BUILD ====="
+      - echo "HOLA JULIAN, CODEBUILD ESTA EJECUTANDO ESTE YAML"
+      - echo "Commit recibido desde GitHub:"
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
+      - echo "Archivos que tengo:"
+      - ls -la
+
+  post_build:
+    commands:
+      - echo "===== POST BUILD ====="
+      - echo "Build terminado correctamente"
+
 artifacts:
   files:
     - '**/*'
